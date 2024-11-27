@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../favorite_bloc/favorite_bloc.dart';
 import '../favorite_bloc/favorite_event.dart';
-import 'package:testing_ground/pages/product_page.dart';
+import 'package:testing_ground/pages/product_related/product_page.dart';
 import '../favorite_bloc/favorite_state.dart';
 import '../models/product.dart';
 
@@ -59,7 +59,7 @@ class ProductCard extends StatelessWidget {
                       color: isFavorite ? Colors.red : Colors.white,
                     ),
                     onPressed: () {
-                      context.read<FavoriteBloc>().add(ToggleFavorite(product.productId));
+                      context.read<FavoriteBloc>().add(ToggleFavoriteEvent(product.productId));
                     },
                   );
                 },

@@ -7,10 +7,19 @@ abstract class FavoriteEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ToggleFavorite extends FavoriteEvent {
+class ToggleFavoriteEvent extends FavoriteEvent {
   final int productId;
 
-  const ToggleFavorite(this.productId);
+  const ToggleFavoriteEvent(this.productId);
+
+  @override
+  List<Object> get props => [productId];
+}
+
+class RemoveFavoriteEvent extends FavoriteEvent {
+  final int productId;
+
+  const RemoveFavoriteEvent({required this.productId});
 
   @override
   List<Object> get props => [productId];

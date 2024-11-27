@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testing_ground/api/cart_list.dart';
 import 'package:testing_ground/cart_bloc/cart_bloc.dart';
 import 'package:testing_ground/pages/profile_page.dart';
+import 'package:testing_ground/product_bloc/product_bloc.dart';
+import 'package:testing_ground/product_bloc/product_deletion_bloc.dart';
 import 'favorite_bloc/favorite_bloc.dart';
 import 'package:testing_ground/pages/cart_page.dart';
 import 'api/product_list.dart';
@@ -24,6 +26,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => NavigationCubit()),
         BlocProvider(create: (context) => FavoriteBloc()),
         BlocProvider(create: (context) => CartBloc()),
+        BlocProvider(create: (context) => ProductBloc()),
+        BlocProvider(create: (context) => ProductDeletionBloc(
+          productBloc: context.read<ProductBloc>(),
+          favoriteBloc: context.read<FavoriteBloc>(),
+          cartBloc: context.read<CartBloc>(),
+        )),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

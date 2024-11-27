@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testing_ground/models/product.dart';
+import 'package:testing_ground/pages/product_related/add_product_page.dart';
 import 'package:testing_ground/widgets/product_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,7 +38,9 @@ class HomePage extends StatelessWidget {
               bottom: 20,
               right: 20,
               child: GestureDetector(
-                onTap: () {},
+                onTap: () => Navigator.push(
+                    context, MaterialPageRoute(
+                    builder: (context) => AddProductPage())),
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.cyan,

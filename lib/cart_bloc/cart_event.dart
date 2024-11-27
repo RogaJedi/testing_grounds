@@ -43,7 +43,7 @@ class DecrementQuantityEvent extends CartEvent {
 class RemoveCartEvent extends CartEvent {
   final int productId;
 
-  const RemoveCartEvent(this.productId);
+  const RemoveCartEvent({required this.productId});
 
   @override
   List<Object> get props => [productId];

@@ -5,7 +5,7 @@ import 'package:testing_ground/cart_bloc/cart_bloc.dart';
 import 'package:testing_ground/cart_bloc/cart_event.dart';
 import 'package:testing_ground/cart_bloc/cart_state.dart';
 import 'package:testing_ground/models/cart.dart';
-import 'package:testing_ground/pages/product_page.dart';
+import 'package:testing_ground/pages/product_related/product_page.dart';
 import '../models/product.dart';
 
 class CartProductCard extends StatelessWidget {
@@ -72,9 +72,6 @@ class CartProductCard extends StatelessWidget {
                           children: [
                             BlocBuilder<CartBloc, CartState> (
                                 builder: (context, state) {
-                                  print("------------------");
-                                  print(CartList.carts);
-                                  print("------------------");
                                   int currentQuantity = 0;
                                   Cart? currentCart = state.carts.firstWhere(
                                         (cart) => cart.productId == product.productId,
@@ -106,7 +103,7 @@ class CartProductCard extends StatelessWidget {
                                 builder: (context, state) {
                                   return IconButton(
                                       onPressed: () {
-                                        context.read<CartBloc>().add(RemoveCartEvent(product.productId));
+                                        context.read<CartBloc>().add(RemoveCartEvent(productId: product.productId));
                                       },
                                       icon: const Icon(Icons.delete)
                                   );

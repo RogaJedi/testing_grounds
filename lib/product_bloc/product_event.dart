@@ -9,11 +9,58 @@ abstract class ProductEvent extends Equatable {
 
 class AddProductEvent extends ProductEvent {
   final int productId;
+  final String name;
+  final String imageUrl;
+  final String description;
+  final int price;
+  final int stock;
 
-  const AddProductEvent({required this.productId});
+  const AddProductEvent({
+    required this.productId,
+    required this.name,
+    required this.imageUrl,
+    required this.description,
+    required this.price,
+    required this.stock,
+  });
 
   @override
-  List<Object> get props => [productId];
+  List<Object> get props => [
+    productId,
+    name,
+    imageUrl,
+    description,
+    price,
+    stock
+  ];
+}
+
+class EditProductEvent extends ProductEvent {
+  final int productId;
+  final String name;
+  final String imageUrl;
+  final String description;
+  final int price;
+  final int stock;
+
+  const EditProductEvent({
+    required this.productId,
+    required this.name,
+    required this.imageUrl,
+    required this.description,
+    required this.price,
+    required this.stock,
+  });
+
+  @override
+  List<Object> get props => [
+    productId,
+    name,
+    imageUrl,
+    description,
+    price,
+    stock
+  ];
 }
 
 class RemoveProductEvent extends ProductEvent {

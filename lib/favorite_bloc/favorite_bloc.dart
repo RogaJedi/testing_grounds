@@ -6,10 +6,11 @@ import 'package:testing_ground/models/favorite.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   FavoriteBloc() : super(FavoriteState(favorites: FavoriteList.favorites)) {
-    on<ToggleFavorite>(_onToggleFavorite);
+    on<ToggleFavoriteEvent>(_onToggleFavorite);
+    on<RemoveFavoriteEvent>(_onRemoveFavorite);
   }
 
-  void _onToggleFavorite(ToggleFavorite event, Emitter<FavoriteState> emit) {
+  void _onToggleFavorite(ToggleFavoriteEvent event, Emitter<FavoriteState> emit) {
     if (FavoriteList.isFavorite(event.productId)) {
       FavoriteList.removeFavorite(event.productId);
     } else {
@@ -22,4 +23,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     }
     emit(FavoriteState(favorites: List.from(FavoriteList.favorites)));
   }
+
+  void _onRemoveFavorite(RemoveFavoriteEvent event, Emitter<FavoriteState> emit) {
+    FavoriteList.removeFavorite(event.productId);
+    emit(FavoriteState(favorites: List.from(FavoriteList.favorites)));
+  }
+
 }
